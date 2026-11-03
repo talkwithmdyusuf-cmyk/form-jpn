@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>JapanKaam for Job Seekers</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Noto+Sans+JP:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F5F0}
+a{color:#14213D}a:hover{color:#B3261E}
+input,select,button,textarea{font:inherit}
+.f{font-size:16px;font-weight:400;padding:12px 14px;border:1.5px solid #D9D4C9;border-radius:10px;color:#14213D;background:#ffffff;min-width:0;width:100%;box-sizing:border-box;min-height:48px;transition:border-color .15s,box-shadow .15s}
+.f:hover{border-color:#B8B2A5}
+.f:focus{outline:none;border-color:#14213D;box-shadow:0 0 0 4px rgba(20,33,61,.12)}
+.f::placeholder{color:#8A8F9C}
+.lb{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;min-width:0}
+.req{color:#B3261E}
+.hint{font-size:13px;font-weight:400;color:#5A6273}
+.pill{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid #D9D4C9;border-radius:999px;background:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.pill input{position:absolute;opacity:0;pointer-events:none}
+.pill:hover{border-color:#14213D}
+.pill:has(input:checked){background:#14213D;border-color:#14213D;color:#fff}
+.pill:has(input:focus-visible){box-shadow:0 0 0 4px rgba(20,33,61,.18)}
+.drop{transition:border-color .15s,background .15s}
+.drop:hover{border-color:#B3261E;background:#FBF3F2}
+.btn{min-height:52px;padding:0 24px;border-radius:12px;font-weight:600;font-size:16px;cursor:pointer;transition:transform .1s,opacity .15s}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:3px solid #F2C14E;outline-offset:2px}
+.add{min-height:44px;padding:0 16px;border:1.5px dashed #C9C4B8;border-radius:10px;background:#fff;color:#14213D;font-weight:600;cursor:pointer}
+.add:hover{border-color:#14213D}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', 'Noto Sans JP', system-ui, sans-serif; color: #14213D; background: #F7F5F0; line-height: 1.55">
+
+<!-- NAV -->
+<header style="background: #14213D; border-bottom: 1px solid #22305A">
+  <nav aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+    <a href="#top" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #ffffff">
+      <span aria-hidden="true" style="width: 38px; height: 38px; border-radius: 50%; background: #B3261E; display: flex; align-items: center; justify-content: center; color: #ffffff; font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 18px">仕</span>
+      <span style="display: flex; flex-direction: column; line-height: 1.1">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em">JapanKaam</span>
+        <span style="font-size: 12px; font-weight: 600; color: #AEB6C8">for Job Seekers · 求職者の方へ</span>
+      </span>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-weight: 500; font-size: 15px">
+      <a href="#why" style="text-decoration: none; color: #D7DCE6">Why Japan</a>
+      <a href="#how" style="text-decoration: none; color: #D7DCE6">How it works</a>
+      <a href="#login" style="text-decoration: none; padding: 10px 18px; border-radius: 10px; border: 1.5px solid #3A4A75; color: #ffffff; font-weight: 600">Log in</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="top" style="background: #14213D; color: #ffffff; position: relative; overflow: hidden">
+  <div aria-hidden="true" style="position: absolute; right: -180px; top: -220px; width: 560px; height: 560px; border-radius: 50%; background: #B3261E; opacity: 0.9"></div>
+  <div aria-hidden="true" style="position: absolute; left: -140px; top: 220px; width: 360px; height: 360px; border-radius: 50%; border: 2px solid #2B3B63"></div>
+  <div style="position: relative; max-width: 860px; margin: 0 auto; padding: 72px 24px 200px; display: flex; flex-direction: column; align-items: center; text-align: center">
+    <p style="margin: 0 0 16px; padding: 6px 14px; border-radius: 999px; background: rgba(242,193,78,0.14); font-family: 'Noto Sans JP', sans-serif; font-size: 14px; font-weight: 700; color: #F2C14E">あなたの未来は、日本で輝く。</p>
+    <h1 style="margin: 0 0 18px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(40px, 6.4vw, 72px); line-height: 1.02; letter-spacing: -0.035em">Your career in Japan <span style="color: #F2C14E">starts here.</span></h1>
+    <p style="margin: 0 0 28px; font-size: 19px; max-width: 600px; color: #D7DCE6">Japanese employers are looking for skilled, hard-working people from India. Share your resume once and let the right opportunity find you.</p>
+    <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; font-size: 15px; font-weight: 500; color: #ffffff">
+      <li style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2C14E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>Free for candidates</li>
+      <li style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2C14E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>Your details stay private</li>
+      <li style="display: flex; align-items: center; gap: 8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F2C14E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>Japanese-speaking support</li>
+    </ul>
+  </div>
+</section>
+
+<!-- REGISTER CARD (overlaps hero) -->
+<section id="register" style="position: relative; max-width: 820px; margin: -160px auto 0; padding: 0 16px">
+  <div style="background: #ffffff; border-radius: 24px; box-shadow: 0 30px 80px rgba(14,23,48,0.22), 0 2px 6px rgba(14,23,48,0.06); overflow: hidden">
+
+    <sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+      <!-- Stepper header -->
+      <div style="padding: 28px 32px 22px; border-bottom: 1px solid #EEEBE4; display: flex; flex-direction: column; gap: 18px">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px">
+          <div>
+            <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em; line-height: 1.15">Upload your resume and register</h2>
+            <p style="margin: 4px 0 0; font-size: 15px; color: #4A5265">Step {{ stepNum }} of 3 · {{ stepName }}</p>
+          </div>
+          <span style="font-size: 13px; font-weight: 600; color: #5A6273">Fields marked <span class="req">*</span> are required</span>
+        </div>
+        <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+          <sc-for list="{{ stepper }}" as="st" hint-placeholder-count="3">
+            <li style="display: flex; flex-direction: column; gap: 8px">
+              <span style="height: 6px; border-radius: 999px; background: {{ st.bar }}"></span>
+              <span style="font-size: 13px; font-weight: 600; color: {{ st.text }}">{{ st.label }}</span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+
+      <form aria-label="Upload your resume and register" onSubmit="{{ submit }}" style="padding: 28px 32px 32px; display: flex; flex-direction: column; gap: 22px">
+
+        <!-- STEP 1 -->
+        <div data-step="1" style="display: {{ d1 }}; flex-direction: column; gap: 22px">
+          <label class="drop" onDragOver="{{ dragOver }}" onDragLeave="{{ dragLeave }}" onDrop="{{ drop }}" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 36px 20px; border: 2px dashed {{ dropBorder }}; border-radius: 18px; background: {{ dropBg }}; cursor: pointer; text-align: center">
+            <sc-if value="{{ noFile }}" hint-placeholder-val="{{ true }}">
+              <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: #B3261E; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(179,38,30,0.3)">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 16v4h16v-4"></path></svg>
+              </span>
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 21px">Drag your resume here</span>
+              <span style="font-size: 15px; color: #4A5265">or <span style="color: #B3261E; font-weight: 600; text-decoration: underline">browse your files</span></span>
+              <span style="font-size: 13px; color: #5A6273">PDF, Word or a clear photo · up to 5 MB</span>
+            </sc-if>
+            <sc-if value="{{ hasFile }}" hint-placeholder-val="{{ false }}">
+              <span aria-hidden="true" style="width: 64px; height: 64px; border-radius: 50%; background: #1F7A4D; display: flex; align-items: center; justify-content: center">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>
+              </span>
+              <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 20px; word-break: break-all">{{ fileName }}</span>
+              <span style="font-size: 14px; color: #175C3A; font-weight: 600">Resume attached · click to change</span>
+            </sc-if>
+            <input type="file" accept=".pdf,.doc,.docx,image/*" onChange="{{ pickFile }}" style="position: absolute; width: 1px; height: 1px; opacity: 0">
+          </label>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+            <label class="lb"><span>Full name <span class="req">*</span></span><input class="f" type="text" autocomplete="name" required=""></label>
+            <label class="lb"><span>Phone / WhatsApp <span class="req">*</span></span><input class="f" type="tel" autocomplete="tel" placeholder="+91" required=""></label>
+            <label class="lb">Email<input class="f" type="email" autocomplete="email" placeholder="you@example.com"></label>
+            <label class="lb"><span>Current location <span class="req">*</span></span><input class="f" type="text" placeholder="e.g. Bengaluru, India" required=""></label>
+            <label class="lb">Date of birth<input class="f" type="date"></label>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div data-step="2" style="display: {{ d2 }}; flex-direction: column; gap: 22px">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+            <label class="lb"><span>Current job title / role <span class="req">*</span></span><input class="f" type="text" placeholder="e.g. Staff nurse, Java developer" required=""></label>
+            <label class="lb"><span>Years of experience <span class="req">*</span></span><input class="f" type="number" min="0" required=""></label>
+          </div>
+
+          <fieldset style="border: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+            <legend style="padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 600">Japanese level (JLPT) <span class="req">*</span> <span class="hint">· No Japanese yet? Choose "None", we'll guide you.</span></legend>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <label class="pill"><input type="radio" name="jlpt" value="N1">N1 · Fluent</label>
+              <label class="pill"><input type="radio" name="jlpt" value="N2">N2 · Business</label>
+              <label class="pill"><input type="radio" name="jlpt" value="N3">N3 · Conversational</label>
+              <label class="pill"><input type="radio" name="jlpt" value="N4">N4 · Basic</label>
+              <label class="pill"><input type="radio" name="jlpt" value="N5">N5 · Beginner</label>
+              <label class="pill"><input type="radio" name="jlpt" value="None" checked="">None</label>
+            </div>
+          </fieldset>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+            <label class="lb"><span>Visa status <span class="req">*</span></span>
+              <select class="f" required=""><option>Need Visa Support</option><option>Have Japan Work Visa</option><option>Permanent Resident / Spouse</option><option>Skilled Worker / Student Visa</option><option>Japanese Citizen</option></select>
+            </label>
+            <label class="lb">When can you join?
+              <select class="f"><option>Immediate</option><option>Within 2 Weeks</option><option>1 Month</option><option>2 Months</option><option>Not Actively Looking</option></select>
+            </label>
+            <label class="lb">Current salary (JPY/yr)<input class="f" type="number" min="0" placeholder="Optional"></label>
+            <label class="lb"><span>Expected salary (JPY/yr) <span class="req">*</span></span><input class="f" type="number" min="0" required=""></label>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <label class="lb">Skills <span class="hint">Type a skill and press Enter</span>
+              <input class="f" type="text" placeholder="e.g. Elderly care, Java, Welding" onKeyDown="{{ skillKey }}">
+            </label>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px">
+              <sc-for list="{{ skills }}" as="s" hint-placeholder-count="0">
+                <span style="display: inline-flex; align-items: center; gap: 2px; padding: 4px 4px 4px 14px; border-radius: 999px; background: #E8EEF9; color: #1D3A70; font-size: 14px; font-weight: 600">{{ s.name }}
+                  <button type="button" onClick="{{ s.remove }}" aria-label="Remove skill" style="width: 30px; height: 30px; border: none; border-radius: 50%; background: transparent; color: #1D3A70; cursor: pointer; font-size: 18px; line-height: 1">×</button>
+                </span>
+              </sc-for>
+            </div>
+          </div>
+
+          <label class="lb">Professional summary <span class="hint">Optional · a few lines about you and what you're looking for</span>
+            <textarea class="f" rows="3" style="resize: vertical"></textarea>
+          </label>
+        </div>
+
+        <!-- STEP 3 -->
+        <div data-step="3" style="display: {{ d3 }}; flex-direction: column; gap: 24px">
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px">Work experience</h3>
+            <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="1">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; padding: 16px; border-radius: 14px; background: #F7F5F0">
+                <label class="lb">Role<input class="f" type="text"></label>
+                <label class="lb">Company<input class="f" type="text"></label>
+                <label class="lb">From<input class="f" type="month"></label>
+                <label class="lb">To<input class="f" type="month"></label>
+              </div>
+            </sc-for>
+            <button type="button" class="add" onClick="{{ addJob }}" style="align-self: flex-start">+ Add another role</button>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px">Education</h3>
+            <sc-for list="{{ edus }}" as="ed" hint-placeholder-count="1">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; padding: 16px; border-radius: 14px; background: #F7F5F0">
+                <label class="lb">Degree / course<input class="f" type="text"></label>
+                <label class="lb">Institution<input class="f" type="text"></label>
+                <label class="lb">Year completed<input class="f" type="number" min="1950" max="2035"></label>
+              </div>
+            </sc-for>
+            <button type="button" class="add" onClick="{{ addEdu }}" style="align-self: flex-start">+ Add education</button>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px">
+            <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px">Relocation &amp; job preferences</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px">
+              <label class="lb">Preferred employment
+                <select class="f"><option>Full-time</option><option>Contract</option><option>Part-time</option></select>
+              </label>
+              <label class="lb">Preferred work mode
+                <select class="f"><option>On-site</option><option>Hybrid</option><option>Remote</option></select>
+              </label>
+              <label class="lb">Target roles<input class="f" type="text" placeholder="e.g. Care worker, Backend engineer"></label>
+              <label class="lb">Target Japan cities<input class="f" type="text" placeholder="e.g. Tokyo, Osaka"></label>
+            </div>
+          </div>
+
+          <label style="display: flex; gap: 12px; align-items: flex-start; padding: 16px; border-radius: 14px; background: #F4F1EA; font-size: 14px; color: #4A5265">
+            <input type="checkbox" required="" style="width: 20px; height: 20px; margin-top: 1px; flex: none; accent-color: #14213D">
+            <span>I agree that JapanKaam may share an anonymised profile with employers in Japan. My contact details are shared only when I accept an interview.</span>
+          </label>
+        </div>
+
+        <!-- ACTIONS -->
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 4px">
+          <sc-if value="{{ canBack }}" hint-placeholder-val="{{ false }}">
+            <button type="button" class="btn" onClick="{{ back }}" style="border: 1.5px solid #D9D4C9; background: #ffffff; color: #14213D">Back</button>
+          </sc-if>
+          <sc-if value="{{ notLast }}" hint-placeholder-val="{{ true }}">
+            <button type="button" class="btn" onClick="{{ next }}" style="flex: 1; border: none; background: #14213D; color: #ffffff">Continue →</button>
+          </sc-if>
+          <sc-if value="{{ isLast }}" hint-placeholder-val="{{ false }}">
+            <button type="submit" class="btn" style="flex: 1; border: none; background: #B3261E; color: #ffffff">Register and take the first step · 登録する</button>
+          </sc-if>
+        </div>
+        <p style="margin: -8px 0 0; text-align: center; font-size: 13px; color: #5A6273">Free for candidates. We never charge you a fee.</p>
+      </form>
+    </sc-if>
+
+    <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 56px 32px">
+        <span aria-hidden="true" style="width: 80px; height: 80px; border-radius: 50%; background: #1F7A4D; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(31,122,77,0.3)">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>
+        </span>
+        <p style="margin: 0; font-family: 'Noto Sans JP', sans-serif; font-weight: 700; color: #B3261E">登録ありがとうございます！</p>
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em">You've taken the first step!</h2>
+        <p style="margin: 0; font-size: 16px; color: #4A5265; max-width: 440px">Our team will review your resume and message you on WhatsApp within [X] days with your next steps.</p>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" style="max-width: 1200px; margin: 0 auto; padding: 104px 24px 56px">
+  <div style="text-align: center; display: flex; flex-direction: column; align-items: center">
+    <p style="margin: 0 0 10px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #B3261E">Why register · 登録のメリット</p>
+    <h2 style="margin: 0 0 44px; max-width: 720px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.02em; line-height: 1.1">Your skills are needed in Japan. We'll help open the door.</h2>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px">
+    <article style="background: #ffffff; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+      <span aria-hidden="true" style="width: 48px; height: 48px; border-radius: 14px; background: #FBF3F2; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></span>
+      <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Employers are looking for you</h3>
+      <p style="margin: 0; font-size: 15px; color: #4A5265">Companies in caregiving, IT, food service, construction and manufacturing want skilled people from India.</p>
+    </article>
+    <article style="background: #ffffff; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+      <span aria-hidden="true" style="width: 48px; height: 48px; border-radius: 14px; background: #FBF3F2; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
+      <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Completely free for you</h3>
+      <p style="margin: 0; font-size: 15px; color: #4A5265">You never pay a fee to register, interview or get hired. Employers cover the cost.</p>
+    </article>
+    <article style="background: #ffffff; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+      <span aria-hidden="true" style="width: 48px; height: 48px; border-radius: 14px; background: #FBF3F2; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg></span>
+      <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Guidance at every step</h3>
+      <p style="margin: 0; font-size: 15px; color: #4A5265">Our Japanese-speaking team helps with interviews, documents and settling in.</p>
+    </article>
+    <article style="background: #ffffff; border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 12px">
+      <span aria-hidden="true" style="width: 48px; height: 48px; border-radius: 14px; background: #FBF3F2; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B3261E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span>
+      <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Your details stay private</h3>
+      <p style="margin: 0; font-size: 15px; color: #4A5265">Employers see an anonymised profile. Contact details are shared only when you accept an interview.</p>
+    </article>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 96px">
+  <div style="background: #ffffff; border-radius: 24px; padding: 48px 40px">
+    <p style="margin: 0 0 10px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #B3261E">How it works · 流れ</p>
+    <h2 style="margin: 0 0 40px; max-width: 680px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.02em; line-height: 1.1">From your resume to your first day in Japan</h2>
+    <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px">
+      <li style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 52px; line-height: 1; color: #B3261E">01</span>
+        <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Upload your resume</h3>
+        <p style="margin: 0; font-size: 15px; color: #4A5265">Share your resume and build your profile in three short steps.</p>
+      </li>
+      <li style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 52px; line-height: 1; color: #B3261E">02</span>
+        <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Get guidance</h3>
+        <p style="margin: 0; font-size: 15px; color: #4A5265">We review your profile and tell you what you need, from Japanese level to skills tests.</p>
+      </li>
+      <li style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 52px; line-height: 1; color: #B3261E">03</span>
+        <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Interview with employers</h3>
+        <p style="margin: 0; font-size: 15px; color: #4A5265">Meet Japanese employers online, with our team there to help you communicate.</p>
+      </li>
+      <li style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 52px; line-height: 1; color: #B3261E">04</span>
+        <h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 700">Start your new life</h3>
+        <p style="margin: 0; font-size: 15px; color: #4A5265">Get your offer, prepare for the move and begin your career in Japan.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 96px">
+  <div style="background: #14213D; color: #ffffff; border-radius: 24px; padding: 56px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; position: relative; overflow: hidden">
+    <div aria-hidden="true" style="position: absolute; left: -90px; bottom: -120px; width: 260px; height: 260px; border-radius: 50%; background: #B3261E; opacity: 0.85"></div>
+    <p style="position: relative; margin: 0; font-family: 'Noto Sans JP', sans-serif; font-weight: 700; color: #F2C14E">夢への第一歩を踏み出そう。</p>
+    <h2 style="position: relative; margin: 0; max-width: 640px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.02em; line-height: 1.15">Your dream job in Japan is one step away.</h2>
+    <a href="#register" style="position: relative; margin-top: 8px; display: inline-flex; align-items: center; min-height: 52px; text-decoration: none; padding: 0 28px; border-radius: 12px; background: #B3261E; color: #ffffff; font-weight: 600; font-size: 16px">Upload your resume now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0E1730; color: #C4CBDA">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 14px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; color: #ffffff">JapanKaam</span>
+      <span>Indian talent for Japanese workplaces.</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px">
+      <a href="#employers" style="color: #C4CBDA; text-decoration: none">For employers</a>
+      <a href="#contact" style="color: #C4CBDA; text-decoration: none">Contact</a>
+      <a href="#privacy" style="color: #C4CBDA; text-decoration: none">Privacy</a>
+    </div>
+    <span style="font-size: 13px">© 2026 JapanKaam · [Licence no.]</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":3200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { fileName: '', dragging: false, submitted: false, step: 1, skills: [], jobs: 1, edus: 1 };
+  }
+  validStep(e) {
+    const form = e && e.currentTarget && e.currentTarget.closest ? e.currentTarget.closest('form') : null;
+    if (!form) return true;
+    const fields = form.querySelectorAll('[data-step="' + this.state.step + '"] [required]');
+    for (let i = 0; i < fields.length; i++) {
+      if (!fields[i].checkValidity()) { fields[i].reportValidity(); return false; }
+    }
+    return true;
+  }
+  renderVals() {
+    const s = this.state || {};
+    const step = s.step || 1;
+    const names = ['Resume & contact', 'Work & language', 'Experience & preferences'];
+    const range = (n) => Array.from({ length: n }, (_, i) => ({ id: i }));
+    return {
+      stepNum: step,
+      stepName: names[step - 1],
+      stepper: names.map((label, i) => ({
+        label: label,
+        bar: i + 1 <= step ? '#14213D' : '#E6E3DC',
+        text: i + 1 <= step ? '#14213D' : '#5A6273'
+      })),
+      d1: step === 1 ? 'flex' : 'none',
+      d2: step === 2 ? 'flex' : 'none',
+      d3: step === 3 ? 'flex' : 'none',
+      canBack: step > 1,
+      notLast: step < 3,
+      isLast: step === 3,
+      next: (e) => { if (this.validStep(e)) this.setState({ step: Math.min(3, step + 1) }); },
+      back: () => this.setState({ step: Math.max(1, step - 1) }),
+      noFile: !s.fileName,
+      hasFile: !!s.fileName,
+      fileName: s.fileName,
+      dropBorder: s.dragging ? '#B3261E' : (s.fileName ? '#1F7A4D' : '#C9C4B8'),
+      dropBg: s.dragging ? '#FBF3F2' : (s.fileName ? '#EEF7F1' : '#F7F5F0'),
+      pickFile: (e) => {
+        const f = e && e.target && e.target.files && e.target.files[0];
+        if (f) this.setState({ fileName: f.name });
+      },
+      dragOver: (e) => { e.preventDefault(); if (!this.state.dragging) this.setState({ dragging: true }); },
+      dragLeave: () => this.setState({ dragging: false }),
+      drop: (e) => {
+        e.preventDefault();
+        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        this.setState({ dragging: false, fileName: f ? f.name : this.state.fileName });
+      },
+      skills: (s.skills || []).map((name, i) => ({
+        name: name,
+        remove: () => this.setState({ skills: (this.state.skills || []).filter((_, k) => k !== i) })
+      })),
+      skillKey: (e) => {
+        if (!e || e.key !== 'Enter') return;
+        e.preventDefault();
+        const v = (e.target.value || '').trim();
+        if (!v) return;
+        const cur = this.state.skills || [];
+        if (cur.indexOf(v) === -1) this.setState({ skills: cur.concat([v]) });
+        e.target.value = '';
+      },
+      jobs: range(s.jobs || 0),
+      edus: range(s.edus || 0),
+      addJob: () => this.setState({ jobs: (this.state.jobs || 0) + 1 }),
+      addEdu: () => this.setState({ edus: (this.state.edus || 0) + 1 }),
+      notDone: !s.submitted,
+      done: !!s.submitted,
+      submit: (e) => {
+        if (e && e.preventDefault) e.preventDefault();
+        this.setState({ submitted: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
